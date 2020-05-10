@@ -1,15 +1,13 @@
 #!/usr/bin/php
 <?php
-include_once "Lybrary/My_bash_class.php";
-include_once "Lybrary/exit_program.php";
-include_once "Lybrary/error-input.php";
-include_once "Lybrary/start-language.php";
+define('SCRIPT_RUN', true);
+
+include_once "Lybrary/My.bash.class.php";
+include_once "Lybrary/start.function.php";
+include_once "Lybrary/exit.program.php";
+include_once "Lybrary/error.input.php";
+include_once "Lybrary/start.language.php";
 include_once "Lybrary/ru/main.php";
-include_once "Lybrary/ru/start.php";
-use My_bash_class\My_bash_class;
-$bash = new My_bash_class();
 
-start_choice_language();
-
-end_program("Программа завершила работу успешно. ");
-
+if (SCRIPT_RUN)
+    start();
