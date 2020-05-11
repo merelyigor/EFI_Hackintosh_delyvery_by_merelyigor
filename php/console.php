@@ -23,9 +23,9 @@ include_once "library/start.language.php";          # функция выбор�
 
 include_once "library/ru/main.php";                 # стартовая точка скрипта на русском языке
 
+$bash->bash("sh ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
 
 if (SCRIPT_RUN)                                     # проверка по точке включения или выключения скрипта
     start();
 
 
-$bash->bash("sh ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
