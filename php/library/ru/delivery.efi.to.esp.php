@@ -22,9 +22,10 @@ function delivery_efi($repo, $check = false)
     print_magic_wait('ru');
     $bash->bash("git clone {$repo} /Volumes/EFI/repo-tmp");
     print_magic_wait('ru');
-    $bash->bash("mv /Volumes/EFI/repo-tmp/Folder-MacOS-to-clover-partition/EFI/ /Volumes/EFI/EFI");
+    $bash->bash("mv /Volumes/EFI/repo-tmp/EFI/ /Volumes/EFI/EFI");
     print_magic_wait('ru');
     $bash->bash("rm -rf /Volumes/EFI/repo-tmp");
+
     # русский текст сгенирирован тут http://vkontakte.doguran.ru/kak-pisat-simvolami.php
     boot_loader_select_repo(true, "
                         ███ ███ ███   █ █ ████ ████ ███ █   █ █  █ ████    ████ ███ ████ ███ █   █ ███ █   █  ███ █  █

@@ -17,7 +17,7 @@ function delivery_config($path_config_temp, $check = false)
     print_magic_wait('ru');
 
     $bash->bash("mv -f {$path_config_temp} /Volumes/EFI/EFI/CLOVER/config.plist");
-    print_magic_wait('ru');
+
     # русский текст сгенирирован тут http://vkontakte.doguran.ru/kak-pisat-simvolami.php
     boot_loader_select_repo(true, "
                                 ████ ████ █  █ ███ ███ ████   ████ █   ███ ███    ███ █ █ ████ ████ ███ █   █ █  █ ████ 
