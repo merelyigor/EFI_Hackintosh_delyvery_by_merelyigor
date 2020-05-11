@@ -2,22 +2,26 @@
 
 use My_bash_class\My_bash_class;
 
+/**
+ * функция выбора языка
+ * запускает основные функции в зависимости от выбраного языка
+ *
+ * @param bool $print = вывод текстового заголовка
+ */
 function start_choice_language($print = true)
 {
     $text_header = "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-  Произходит инициалицация скрипта и запуск, подождите...
+  Choose a script interface language...
 
-  Initialization of the script and start, wait...
+  выберите язык интерфейса скрипта...
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-                    Choose a script interface language
-                    Выбирете язык интерфейса скрипта
-
-                    1) EN.
-                    2) RU.
-                    3) Exit/Выход";
+            1) EN.
+            2) RU.
+            3) Exit/Выход
+            ";
 
     $bash = new My_bash_class();
     if ($print) {
@@ -29,7 +33,7 @@ function start_choice_language($print = true)
 
     $result = readline("INPUT|ВВОД: ");
 
-    $error = error_input($text_header, ['1', '2', '3'], $result);
+    $error = error_input(['1', '2', '3'], $result);
 
     if ($error) {
         $bash->bash("clear");
@@ -38,14 +42,13 @@ function start_choice_language($print = true)
         start_choice_language(false);
     } else {
         if ($result == 1) {
-            var_dump('1) EN.');
+            var_dump('1) EN.'); #TODO сделать запуск на английском
         } elseif ($result == 2) {
-            start_ru();
+            start_ru(); # старт функции на русском языке
         } elseif ($result == 3) {
             exit_program('
             Выход из программы :(
             Exit from the program :(');
         }
     }
-
 }

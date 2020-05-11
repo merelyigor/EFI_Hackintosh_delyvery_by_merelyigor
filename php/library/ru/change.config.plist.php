@@ -1,25 +1,16 @@
 <?php
 
-include_once "config.delivery.php";
-
 use My_bash_class\My_bash_class;
 
-function hex_to_base64($hex)
-{
-    $return = '';
-    foreach (str_split($hex, 2) as $pair) {
-        $return .= chr(hexdec($pair));
-    }
-    return base64_encode($return);
-}
 
-function base64_to_hex($base64)
-{
-    $binary = base64_decode($base64);
-    return bin2hex($binary);
-}
-
-function check_config_items($item_plist_xml)
+/**
+ * функция проверки стокового конфиг файла на наличие основных разделов
+ *
+ * @param array $item_plist_xml = массив названий основных разделов
+ *
+ * @return null = нечего если все впорядке || ошибка и выход из программы
+ */
+function check_config_items($item_plist_xml = [])
 {
     $arr_config_key = [
         'ACPI',
@@ -38,12 +29,20 @@ function check_config_items($item_plist_xml)
         if (array_search($item, json_decode(json_encode($item_plist_xml), true)) === false)
             exit_program_error("
             Ошибка!!! У вас поломанный стоковый файл config.plist
-            В нем отсутсвует раздел {$arr_config_key[$key]}
+            В нем отсутсвует раздел {$arr_config_key[$key]}, попробуйте решить эту проблему после чего
+            из главного меню программы вы заново можете запустить изминение стокового config.plist
             ");
     }
     return null;
 }
 
+/**
+ * функция изминения стокового config.plist
+ * заменяет такие параметры как (SerialNumber|BoardSerialNumber|ROM|MLB|SmUUID)
+ * параметры берутся из файла macos.hackintosh.csv лежащего в домашней папке юзера
+ *
+ * @return null = запускает функцию переноса измененного config.plist файла в Clover на разделе ESP
+ */
 function change_config_plist()
 {
     $config_plist_xml = simplexml_load_file("/Volumes/EFI/EFI/CLOVER/config.plist");
@@ -56,19 +55,19 @@ function change_config_plist()
         ");
 
     $bash = new My_bash_class();
-    $user = $bash->bash('whoami');
+    $user_name_home_folder = $bash->bash('whoami');
     $bash->bash("clear");
     print_main_header();
 
-    $csv_file = fopen("/Users/{$user}/macos.hackintosh.csv", 'r');
+    $csv_file = fopen("/Users/{$user_name_home_folder}/macos.hackintosh.csv", 'r');
     $my_arr_data = [];
 
     if (!$csv_file)
         exit_program_error("
         Ошибка!!!
-        у вас отсутствует файл macos.hackintosh.csv в папке юзера по пути (/Users/{$user}/)
+        у вас отсутствует файл macos.hackintosh.csv в папке юзера по пути (/Users/{$user_name_home_folder}/)
         Чтобы скрипт отработал правильно у вас должен быть ваш личный файл macos.hackintosh.csv 
-        в папке юзера по пути (/Users/{$user}/)
+        в папке юзера по пути (/Users/{$user_name_home_folder}/)
         ");
 
     if ($csv_file) {
@@ -92,7 +91,7 @@ function change_config_plist()
     if (count($my_arr_data) < 4)
         exit_program_error("
         Ошибка!!!
-        В вашем файле macos.hackintosh.csv в папке юзера по пути (/Users/{$user}/)
+        В вашем файле macos.hackintosh.csv в папке юзера по пути (/Users/{$user_name_home_folder}/)
         Отсутствует один или несколько параметров ну или он вовсе пуст. 
         В вашем файле macos.hackintosh.csv должны содержаться данные для config.plist
         
@@ -172,7 +171,9 @@ function change_config_plist()
         }
     }
 
-    file_put_contents('/Volumes/EFI/temp.plist', $config_plist_xml->saveXML());
+    # Сохраняю новый config.plist файл временно на ESP разделе в папке EFI
+    file_put_contents("/Users/{$user_name_home_folder}/temp-file-config.plist", $config_plist_xml->saveXML());
 
-    config_delivery();
+    # Запуск функции перемещения temp-file-config.plist в /Volumes/EFI/EFI/CLOVER раздела ESP
+    delivery_config("/Users/{$user_name_home_folder}/temp-file-config.plist");
 }
