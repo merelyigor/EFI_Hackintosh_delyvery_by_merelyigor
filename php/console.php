@@ -1,7 +1,8 @@
 #!/usr/bin/php
 <?php
-
+include_once "library/My.bash.class.php";           # основной класс выполнения bash команд
 use My_bash_class\My_bash_class;
+
 $bash = new My_bash_class();
 
 define('SCRIPT_RUN', true);                         # точка включения или выключения скрипта
@@ -9,8 +10,6 @@ define('SCRIPT_RUN', true);                         # точка включен�
 /**
  * подключение всех зависимых функций
  */
-
-include_once "library/My.bash.class.php";           # основной класс выполнения bash команд
 
 include_once "library/helper.functionals.php";      # разные вспомогательные функции
 
