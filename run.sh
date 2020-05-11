@@ -3,12 +3,12 @@
 #======================== Run scripts PHP =======2.0
 #---------------------------------------------------
 
-rm -rf ~/Desktop/test/Lybrary/
-rm -rf ~/Desktop/test/console.php
+rm -rf ~/EFI_Hackintosh_delyvery_by_merelyigor
+mkdir -p ~/EFI_Hackintosh_delyvery_by_merelyigor
+git clone git@github.com:merelyigor/EFI_Hackintosh_delyvery_by_merelyigor.git ~/EFI_Hackintosh_delyvery_by_merelyigor
 
-cp -r ~/GitHub/MY\ HACKINTOS\ EFI-FILES/EFI_delyvery_by_merelyigor/php/Lybrary/ ~/Desktop/test/Lybrary/ || exit
-cp -r ~/GitHub/MY\ HACKINTOS\ EFI-FILES/EFI_delyvery_by_merelyigor/php/console.php ~/Desktop/test/console.php || exit
+chmod +x ~/EFI_Hackintosh_delyvery_by_merelyigor/php/console.php
+chmod +x ~/EFI_Hackintosh_delyvery_by_merelyigor/run.console.sh
+chmod +x ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh
 
-chmod +x ~/Desktop/test/console.php
-
-#./console.php
+sh ~/EFI_Hackintosh_delyvery_by_merelyigor/run.console.sh

@@ -1,6 +1,9 @@
 #!/usr/bin/php
 <?php
 
+use My_bash_class\My_bash_class;
+$bash = new My_bash_class();
+
 define('SCRIPT_RUN', true);                         # точка включения или выключения скрипта
 
 /**
@@ -24,3 +27,6 @@ include_once "library/ru/main.php";                 # стартовая точ�
 
 if (SCRIPT_RUN)                                     # проверка по точке включения или выключения скрипта
     start();
+
+
+$bash->bash("sh ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
