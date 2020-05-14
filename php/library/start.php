@@ -14,6 +14,11 @@ function ctrl_c() {
     rm -rf {$FOLDER_SCRIPT}
 }");
 
+
+var_dump($bash->bash('echo $FOLDER_SCRIPT'));
+
+die();
+
 function start()
 {
     # запус выбора языка
