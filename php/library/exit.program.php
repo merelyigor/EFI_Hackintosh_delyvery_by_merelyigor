@@ -8,6 +8,7 @@ use My_bash_class\My_bash_class;
 function exit_program($text = 'exit')
 {
     $bash = new My_bash_class();
+    $bash->bash_escapeshellarg("printf '\e[8;30;105t'");
     $bash->bash("clear");
     $bash->EEF("
                                                                         iiii          tttt          
