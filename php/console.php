@@ -7,6 +7,9 @@ $bash = new My_bash_class();
 
 define('SCRIPT_RUN', true);                         # точка включения или выключения скрипта
 
+# Папка куда распологается скрипт при запуске и от куда удаляется
+$FOLDER_SCRIPT = '~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor';
+
 /**
  * подключение всех зависимых функций
  */

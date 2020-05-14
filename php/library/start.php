@@ -6,14 +6,13 @@
 use My_bash_class\My_bash_class;
 
 $bash = new My_bash_class();
+# Удаляю папку со скриптом при нажатии Ctrl+C (вызывается bash функция ctrl_c() с помощью trap ctrl_c INT)
 $bash->bash("
 trap ctrl_c INT
 
 function ctrl_c() {
-    rm -rf ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor
+    rm -rf {$FOLDER_SCRIPT}
 }");
-
-//$bash->bash_escapeshellarg("printf '\e[8;27;80t'");
 
 function start()
 {

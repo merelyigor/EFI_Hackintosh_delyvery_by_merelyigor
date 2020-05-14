@@ -59,6 +59,7 @@ function print_magic_wait($language)
  */
 function drop_folder_program_core()
 {
+    global $FOLDER_SCRIPT;
     $bash = new My_bash_class();
-    $bash->bash("sh ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
+    $bash->bash("sh $FOLDER_SCRIPT/clear.sh");
 }
