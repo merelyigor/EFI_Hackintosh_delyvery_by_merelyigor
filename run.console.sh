@@ -7,7 +7,7 @@
 trap ctrl_c INT
 
 function ctrl_c() {
-        rm -rf ~/Desktop/qwerty
+        rm -rf ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor
 }
 
 cd ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor/php/ || exit

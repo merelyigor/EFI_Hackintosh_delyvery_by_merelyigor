@@ -2,6 +2,11 @@
 #---------------------------------------------------
 #======================== Run scripts PHP =======2.0
 #---------------------------------------------------
+trap ctrl_c INT
+
+function ctrl_c() {
+        rm -rf ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor
+}
 
 rm -rf ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor
 mkdir ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor
