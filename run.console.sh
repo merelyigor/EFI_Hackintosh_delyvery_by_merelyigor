@@ -13,7 +13,7 @@ function ctrl_c() {
 #cd ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor/php/ || exit
 
 
-export $(cat $(pwd)/.env | xargs)
+source $(pwd)/.env
 mkdir FOLDER_SCRIPT_TEST
 sleep 100
 exit
