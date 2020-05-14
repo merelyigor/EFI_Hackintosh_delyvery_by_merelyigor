@@ -60,5 +60,5 @@ function print_magic_wait($language)
 function drop_folder_program_core()
 {
     $bash = new My_bash_class();
-    $bash->bash("sh ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
+    $bash->bash("sh ~/Desktop/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
 }
