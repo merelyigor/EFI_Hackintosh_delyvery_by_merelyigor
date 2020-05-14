@@ -10,5 +10,5 @@ function ctrl_c() {
         rm -rf ~/Desktop/qwerty
 }
 
-cd ~/Desktop/EFI_Hackintosh_delyvery_by_merelyigor/php/ || exit
+cd ~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor/php/ || exit
 ./console.php
