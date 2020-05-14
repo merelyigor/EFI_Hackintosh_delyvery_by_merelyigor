@@ -3,4 +3,4 @@
 #======================== Run scripts PHP =======2.0
 #---------------------------------------------------
 
-rm -rf ~/EFI_Hackintosh_delyvery_by_merelyigor
+rm -rf ~/Desktop/EFI_Hackintosh_delyvery_by_merelyigor
