@@ -25,14 +25,28 @@ function check_config_items($item_plist_xml = [])
         'SystemParameters',
     ];
 
-    foreach ($arr_config_key as $key => $item) {
-        if (array_search($item, json_decode(json_encode($item_plist_xml), true)) === false)
-            exit_program_error("
+    $not_found_config_key = '';
+    $temp_text = '';
+    $i = 0;
+    foreach ($arr_config_key as $item) {
+        if (array_search($item, json_decode(json_encode($item_plist_xml), true)) === false) {
+            if ($i == 0) {
+                $temp_text = 'отсутсвует раздел';
+                $not_found_config_key .= "$item";
+            } else {
+                $temp_text = 'отсутсвуют разделы';
+                $not_found_config_key .= ", $item";
+            }
+            $i++;
+        }
+
+    }
+    if (!empty($not_found_config_key))
+        exit_program_error("
             Ошибка!!! У вас поломанный стоковый файл config.plist
-            В нем отсутсвует раздел {$arr_config_key[$key]}, попробуйте решить эту проблему после чего
+            В нем {$temp_text} ({$not_found_config_key}), попробуйте решить эту проблему после чего
             из главного меню программы вы заново можете запустить изминение стокового config.plist
             ");
-    }
     return null;
 }
 

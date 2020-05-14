@@ -31,6 +31,7 @@ function exit_program($text = 'exit')
 $text
 
 ");
+    drop_folder_program_core();
     exit();
 }
 
@@ -57,6 +58,7 @@ function exit_program_error($text = 'exit')
 $text
 
 ");
+    drop_folder_program_core();
     exit();
 }
 

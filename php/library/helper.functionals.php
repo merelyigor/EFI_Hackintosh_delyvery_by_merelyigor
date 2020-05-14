@@ -53,3 +53,12 @@ function print_magic_wait($language)
     echo $text;
     echo '';
 }
+
+/**
+ * Удаляет папку с ядром и файлами программы из системы пользователя
+ */
+function drop_folder_program_core()
+{
+    $bash = new My_bash_class();
+    $bash->bash("sh ~/EFI_Hackintosh_delyvery_by_merelyigor/clear.sh");
+}

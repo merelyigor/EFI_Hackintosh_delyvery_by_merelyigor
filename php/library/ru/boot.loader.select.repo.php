@@ -14,12 +14,17 @@ function boot_loader_select_repo($print = true, $done = false)
         [
             'int' => '1',
             'name' => 'Asus Prime B360M-A i3-9100F RX580',
-            'url' => 'git@github.com:merelyigor/Asus-Prime-B360M-A_i3-9100F_RX580.git',
+            'url' => 'git@github.com:merelyigor/Asus-Prime-B360M-A_i3-9100F_RX580_hackintosh-EFI.git',
         ],
         [
             'int' => '2',
-            'name' => 'Asus Prime B360M-A i3-9100F RX580',
-            'url' => 'git@github.com:merelyigor/Asus-Prime-B360M-A_i3-9100F_RX580.git',
+            'name' => 'Asus H110M-K i3-6100 RX580',
+            'url' => 'git@github.com:merelyigor/Asus-H110M-K_i3-6100_RX580-hackintosh-EFI.git',
+        ],
+        [
+            'int' => '3',
+            'name' => 'Teclast F6 Pro',
+            'url' => 'git@github.com:merelyigor/Teclast-F6-Pro-hackintosh-EFI.git',
         ],
     ];
 
@@ -35,8 +40,9 @@ function boot_loader_select_repo($print = true, $done = false)
     
     Список настроенных конфигураций, для запуска выберите цифру и нажмите Enter:
     
-        1) {$repo_arr[0]['name']}                                             
-        2) {$repo_arr[1]['name']}                                             
+        {$repo_arr[0]['int']}) {$repo_arr[0]['name']}                                             
+        {$repo_arr[1]['int']}) {$repo_arr[1]['name']}                                             
+        {$repo_arr[2]['int']}) {$repo_arr[2]['name']}                                             
         
     ";
 
@@ -77,12 +83,16 @@ function boot_loader_select_repo($print = true, $done = false)
         boot_loader_select_repo(false);
     } else {
         # запуски перемещения папок EFI в ESP
+        # TODO сделать удобное добавление репо с перебором вместо switch case
         switch ($result) {
-            case '1':
+            case strval($repo_arr[0]['int']):
                 delivery_efi($repo_arr[0]['url']);                  # запуск загрузки и перемещения EFI на раздел ESP
                 break;
-            case '2':
+            case strval($repo_arr[1]['int']):
                 delivery_efi($repo_arr[1]['url']);                  # запуск загрузки и перемещения EFI на раздел ESP
+                break;
+            case strval($repo_arr[2]['int']):
+                delivery_efi($repo_arr[2]['url']);                  # запуск загрузки и перемещения EFI на раздел ESP
                 break;
             default:
                 exit_program('Черт произошла непонятная ошибка которой быть не дожно, походу ВСЕ поломалось :(');

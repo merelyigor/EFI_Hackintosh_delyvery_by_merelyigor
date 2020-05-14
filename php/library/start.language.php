@@ -42,7 +42,7 @@ function start_choice_language($print = true)
         start_choice_language(false);
     } else {
         if ($result == 1) {
-            var_dump('1) EN.'); #TODO сделать запуск на английском
+            start_ru(); #TODO сделать запуск на английском
         } elseif ($result == 2) {
             start_ru(); # старт функции на русском языке
         } elseif ($result == 3) {
