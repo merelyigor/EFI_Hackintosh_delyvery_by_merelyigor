@@ -8,7 +8,16 @@ $bash = new My_bash_class();
 define('SCRIPT_RUN', true);                         # точка включения или выключения скрипта
 
 # Папка куда распологается скрипт при запуске и от куда удаляется
-$FOLDER_SCRIPT = '~/Downloads/EFI_Hackintosh_delyvery_by_merelyigor';
+$FOLDER_SCRIPT = $bash->bash('echo $FOLDER_SCRIPT');
+
+$bash = new My_bash_class();
+# Удаляю папку со скриптом при нажатии Ctrl+C (вызывается bash функция ctrl_c() с помощью trap ctrl_c INT)
+$bash->bash("
+trap ctrl_c INT
+
+function ctrl_c() {
+    rm -rf {$FOLDER_SCRIPT}
+}");
 
 /**
  * подключение всех зависимых функций
