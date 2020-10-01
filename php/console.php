@@ -25,7 +25,7 @@ function ctrl_c() {
 
 include_once "library/helper.functionals.php";      # разные вспомогательные функции
 
-include_once "library/start.php";                       # стартовая функция всего скрипта
+include_once "library/start.php";                   # стартовая функция всего скрипта
 
 include_once "library/exit.program.php";            # выводы текстов при выходе из программы
 
