@@ -11,8 +11,8 @@ export FOLDER_SCRIPT="$HOME/Downloads/EFI_Hackintosh_delyvery_by_merelyigor"
 trap ctrl_c INT
 
 function ctrl_c() {
+        chmod +x $FOLDER_SCRIPT/php/library/misc/exit-echo-text.php
         cd $FOLDER_SCRIPT/php/library/misc || exit
-        chmod +x $FOLDER_SCRIPT/php/library/miscexit-echo-text.php
         ./exit-echo-text.php
         rm -rf $FOLDER_SCRIPT
 }
