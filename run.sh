@@ -12,6 +12,7 @@ trap ctrl_c INT
 
 function ctrl_c() {
         cd $FOLDER_SCRIPT/php/library/misc || exit
+        chmod +x $FOLDER_SCRIPT/php/library/miscexit-echo-text.php
         ./exit-echo-text.php
         rm -rf $FOLDER_SCRIPT
 }
