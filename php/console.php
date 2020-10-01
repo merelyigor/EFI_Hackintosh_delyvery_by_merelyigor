@@ -23,6 +23,8 @@ function ctrl_c() {
  * подключение всех зависимых функций
  */
 
+include_once "library/misc/exit-echo-text.php";      # разные вспомогательные функции для вызва из bash
+
 include_once "library/helper.functionals.php";      # разные вспомогательные функции
 
 include_once "library/start.php";                       # стартовая функция всего скрипта

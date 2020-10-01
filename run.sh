@@ -12,6 +12,8 @@ trap ctrl_c INT
 
 function ctrl_c() {
         rm -rf $FOLDER_SCRIPT
+        cd $FOLDER_SCRIPT/php/library/misc || exit
+        ./exit-echo-text.php
 }
 
 rm -rf $FOLDER_SCRIPT
